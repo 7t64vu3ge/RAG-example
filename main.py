@@ -14,7 +14,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 
-from langchain.prompts import PromptTemplate;
+from langchain.prompts import PromptTemplate
 
 load_dotenv()
 
@@ -144,7 +144,6 @@ async def upload_document(file: UploadFile = File(...)):
 
 @app.post("/query")
 async def query_document(req: QueryRequest):
-    global vector_store
 
     if vector_store is None:
         raise HTTPException(status_code=400, detail="No document uploaded yet.")
